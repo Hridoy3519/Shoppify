@@ -1,5 +1,5 @@
 const loadProducts = () => {
-
+  console.log("Hi");
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
     .then((response) => response.json())
@@ -9,27 +9,35 @@ loadProducts();
 
 // show all product in UI 
 const showProducts = (products) => {
-
+  console.log("Hello");
   const allProducts = products.map((pd) => pd);
   const allProductsContainer = document.getElementById("all-products");
   for (const product of allProducts) {
     const { image, title, category, price, id } = product;
+    const { rate, count } = product.rating;
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
     <div class="card h-100">
-        <img src=${image} class="card-img-top product-image" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title">${title}</h5>
-          <p>Category: ${category}</p>
-          <h2>Price: $ ${price}</h2>
-          <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-          <button id="details-btn" class="btn btn-danger">Details</button></div>
-        </div>
-    </div>`
+          <img src=${image} class="card-img-top product-image" alt="...">
+          <div class ="card-body text-center">
+            <h6 class ="card-title">${title} </h6>
+            <p>Category: ${category}</p>
+            <div class="d-flex justify-content-between">
+              <p id="price-text">Price: <span id="amount-text">$${price}</span></p>
+              <p>Rating: ${rate}(${count})</p>
+            </div>
+          </div>
+          <div class ="card-footer d-flex justify-content-between">
+            <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="cart-btn">add to cart</button>
+            <button id="details-btn" class="detail-btn">Details</button>
+          </div>
+    </div>`;
+
     allProductsContainer.appendChild(div);
   }
 };
+
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
@@ -81,16 +89,19 @@ const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 
-//     div.innerHTML = `<div class="single-product">
-// <div>
-// <img class="product-image" src=${image}></img>
-//   </div>
-//   <h3>${title}</h3>
-//   <p>Category: ${category}</p>
-//   <h2>Price: $ ${price}</h2>
-//   <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-//   <button id="details-btn" class="btn btn-danger">Details</button></div>
-//   `;
+// div.innerHTML = `
+// <div class="card h-100">
+//     <img src=${image} class="card-img-top product-image" alt="...">
+//     <div class="card-body text-center">
+//       <h5 class="card-title">${title}</h5>
+//       <p>Category: ${category}</p>
+//       <h2>Price: $ ${price}</h2>
+//       <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+//       <button id="details-btn" class="btn btn-danger">Details</button></div>
+//     </div>
+// </div>`
+
+
