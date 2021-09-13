@@ -6,13 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shoppify</title>
-  <!-- Latest compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" /> -->
 
+  <!-- Bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
+  <!-- Customized Stylesheet -->
   <link rel="stylesheet" href="./css/style.css" />
 
   <!-- google Montserrat  font  -->
@@ -27,6 +26,8 @@
 <body>
   <header></header>
   <main class="main">
+
+    <!-- Search Area -->
     <div class="w-50 mx-auto">
       <div class="input-group mb-3 search-box">
         <input type="text" class="form-control" placeholder="Search Your Product" aria-label="Recipient's username"
@@ -34,12 +35,17 @@
         <button class="btn search-btn" type="button" id="button-addon2">Search</button>
       </div>
     </div>
+
+    <!-- Main UI Section for Cards(on left side) and Shopping Cart (right) -->
     <div class="row p-5">
+
+      <!-- Cards, will be added dynamically by Javascript -->
       <div class="col-md-9 col-lg-9 col-sm-7">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="all-products">
         </div>
       </div>
 
+      <!-- Shopping Cart -->
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
         <div class="cart" id="my-cart">
           <table class="table">
@@ -90,7 +96,15 @@
         </div>
       </div>
     </div>
+
+    <!-- See Details: Modal Container -->
+    <div class="modal-overlay">
+      <div id="modal-container">
+        <h1>Modal Content</h1>
+      </div>
+    </div>
   </main>
+
   <footer></footer>
 
   <!-- add javascript  file  -->
@@ -98,21 +112,3 @@
 </body>
 
 </html>
-
-
-<!-- 
-        <div class="col-md-9 col-lg-9 col-sm-7">
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="all-products">
-            <div class="col">
-              <div class="card h-100">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
- -->
