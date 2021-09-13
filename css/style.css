@@ -60,12 +60,25 @@ input{
   height: 150px;
 }
 
+.card{
+  border-radius: 10px;
+  transition: 0.2s all linear;
+}
+
+.card:hover{
+  box-shadow: 4px 4px 7px gray;
+  transform: translate(0,-10px);
+}
+
+.card-body{
+  padding-bottom: 0;
+}
 #price-text{
+  color: gray;
   margin-bottom: 0;
 }
 
 #amount-text{
-  font-size: 18px;
   font-weight: bold;
 }
 
@@ -102,6 +115,14 @@ input{
 .customized-btn-one:hover{
   background-color: #368B85;
   color: white;
+}
+
+.fa-star,.fa-star-half-alt{
+  color: #FACA50;
+}
+
+.fa-user-check{
+  color: #368B85;
 }
 
 .cart {

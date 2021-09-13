@@ -7,6 +7,31 @@ const loadProducts = () => {
 };
 loadProducts();
 
+
+
+const customerRatings = (rate, count) => {
+  let innerHtml = '';
+  let i = 0;
+  const fullStar = Math.floor(rate);
+  const remaining = rate - fullStar;
+  while (i < fullStar) {
+    innerHtml += `<i class="fas fa-star"></i>`;
+    i++;
+  }
+
+  if (remaining > 0) {
+    innerHtml += `<i class="fas fa-star-half-alt"></i>`;
+    i++;
+  }
+
+  while (i < 5) {
+    innerHtml += `<i class="far fa-star"></i>`;
+    i++;
+  }
+  innerHtml += `(${rate}) <h6 class="rateCount"><i class="fas fa-user-check"></i> ${count}</h6>`;
+  return innerHtml;
+};
+
 // show all product in UI 
 const showProducts = (products) => {
   console.log("Hello");
@@ -25,14 +50,9 @@ const showProducts = (products) => {
           <div class ="card-body text-center">
             <h6 class ="card-title">${title} </h6>
             <p>Category: ${category}</p>
-            <div class="d-flex justify-content-between">
-              <div>
-                <p id="price-text">Price: <span id="amount-text">$${price}</span></p>
-              </div>
-              <div>
-                <p>Rating: ${rate}(${count})</p>
-              </div>
-            </div>
+            <p>${customerRatings(rate, count)}</p>
+            <small id="price-text">Price:</small>
+            <h3 id="amount-text">$${price}</h3>
           </div>
           <div class ="card-footer d-flex justify-content-between">
             <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="customized-btn-one">add to cart</button>
@@ -43,6 +63,7 @@ const showProducts = (products) => {
     allProductsContainer.appendChild(div);
   }
 };
+
 
 let count = 0;
 const addToCart = (id, price) => {
@@ -100,14 +121,27 @@ const updateTotal = () => {
 
 // div.innerHTML = `
 // <div class="card h-100">
-//     <img src=${image} class="card-img-top product-image" alt="...">
-//     <div class="card-body text-center">
-//       <h5 class="card-title">${title}</h5>
-//       <p>Category: ${category}</p>
-//       <h2>Price: $ ${price}</h2>
-//       <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-//       <button id="details-btn" class="btn btn-danger">Details</button></div>
-//     </div>
-// </div>`
+//       <div class="d-flex justify-content-center">
+//         <img src=${image} class="card-img-top product-image mt-3" alt="...">
+//       </div>
+//       <div class ="card-body text-center">
+//         <h6 class ="card-title">${title} </h6>
+//         <p>Category: ${category}</p>
+//         <div class="d-flex justify-content-between align-items-center">
+//           <div>
+//             <p id="price-text">Price: <span id="amount-text">$${price}</span></p>
+//           </div>
+//           <div>
+//             <p>${getStars(rate, count)}</p>
+//           </div>
+//         </div>
+//       </div>
+//       <div class ="card-footer d-flex justify-content-between">
+//         <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="customized-btn-one">add to cart</button>
+//         <button id="details-btn" class="customized-btn-two">Details</button>
+//       </div>
+// </div>`;
+
+{/* <p>Rating: ${rate}(${count})</p> */ }
 
 
