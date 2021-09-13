@@ -7,7 +7,6 @@ const loadProducts = () => {
 };
 loadProducts();
 
-
 //Will show dynamic ratings based on the information
 const customerRatings = (rate, count) => {
   let innerHtml = '';
@@ -20,13 +19,11 @@ const customerRatings = (rate, count) => {
     innerHtml += `<i class="fas fa-star"></i>`;
     i++;
   }
-
   //will show a half start
   if (remaining > 0) {
     innerHtml += `<i class="fas fa-star-half-alt"></i>`;
     i++;
   }
-
   //remaining will be all empty stars
   while (i < 5) {
     innerHtml += `<i class="far fa-star"></i>`;
@@ -44,7 +41,7 @@ const showProducts = (products) => {
   //loop through the each product to show on UI.
   for (const product of allProducts) {
 
-    //Destructuring the objects
+    //Destructuring the object
     const { image, title, category, price, id } = product;
     const { rate, count } = product.rating;
 
@@ -84,6 +81,15 @@ const addToCart = (id, price) => {
   document.getElementById("total-Products").innerText = count;
 };
 
+
+//grandTotal update function
+const updateTotal = () => {
+  const grandTotal =
+    getInputValue("price") + getInputValue("delivery-charge") +
+    getInputValue("total-tax");
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
+};
+
 //getting innerText and convert it in to floating value.
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
@@ -101,10 +107,6 @@ const updatePrice = (id, value) => {
   document.getElementById(id).innerText = total.toFixed(2);
 };
 
-// set innerText function
-const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = value.toFixed(2);
-};
 
 // update delivery charge and total Tax based on purchased amount
 const updateTaxAndCharge = () => {
@@ -123,14 +125,10 @@ const updateTaxAndCharge = () => {
   }
 };
 
-//grandTotal update function
-const updateTotal = () => {
-  const grandTotal =
-    getInputValue("price") + getInputValue("delivery-charge") +
-    getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal.toFixed(2);
+// set innerText function
+const setInnerText = (id, value) => {
+  document.getElementById(id).innerText = value.toFixed(2);
 };
-
 
 //Modal Area
 const modal = document.querySelector('.modal-overlay');
@@ -138,10 +136,23 @@ const modalContainer = document.getElementById('modal-container');
 const closeBtn = document.getElementById('close-btn');
 
 const fetchSingleProduct = id => {
+
+  //Adding Spinner while data loads
+  modalContainer.innerHTML = `
+    <div class="d-flex flex-column align-items-center">
+    <div class="spinner-grow text-primary" role="status">
+    </div>
+    <div>
+        <h4 class="text-primary">Please Wait, Loading</h4>
+    </div>
+  </div>`;
+  modal.classList.add('show-modal');
+
   fetch(`https://fakestoreapi.com/products/${id}`)
     .then(res => res.json())
     .then(data => showDetails(data))
 }
+
 const showDetails = product => {
   const { image, title, category, price, description } = product;
   modalContainer.innerHTML = `
