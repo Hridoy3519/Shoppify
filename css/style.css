@@ -5,13 +5,18 @@ body {
 
 .search-box {
   height: 100%;
-  border: 1px solid rgb(3, 118, 211);
+  border: 1px solid #368B85;
   border-radius: 5px;
   margin-top: 50px;
 }
 
 input{
-  border: none;
+  border: 3px solid black;
+}
+
+.search-btn{
+  background-color: #368B85;
+  color: white;
 }
 
 /* .search-field {
@@ -51,8 +56,8 @@ input{
   border: 1px solid cyan;
 }
 .product-image {
-  width: 100%;
-  height: 300px;
+  width: 150px;
+  height: 150px;
 }
 
 #price-text{
@@ -64,7 +69,7 @@ input{
   font-weight: bold;
 }
 
-.detail-btn{
+.customized-btn-two{
   background-color: #368B85;
   padding: .6rem 0.5rem;
   margin: .6rem;
@@ -74,7 +79,8 @@ input{
   transition: all 0.5s linear;
 }
 
-.cart-btn{
+.customized-btn-one{
+  text-transform: capitalize;
   background-color: white;
   padding: .6rem 0.5rem;
   margin: .6rem;
@@ -88,12 +94,12 @@ input{
   background: white;
   border: 0px;
 }
-.detail-btn:hover{
+.customized-btn-two:hover{
   background-color: white;
   color: black;
 }
 
-.cart-btn:hover{
+.customized-btn-one:hover{
   background-color: #368B85;
   color: white;
 }

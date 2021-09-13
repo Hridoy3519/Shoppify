@@ -19,18 +19,24 @@ const showProducts = (products) => {
     div.classList.add("col");
     div.innerHTML = `
     <div class="card h-100">
-          <img src=${image} class="card-img-top product-image" alt="...">
+          <div class="d-flex justify-content-center">
+            <img src=${image} class="card-img-top product-image mt-3" alt="...">
+          </div>
           <div class ="card-body text-center">
             <h6 class ="card-title">${title} </h6>
             <p>Category: ${category}</p>
             <div class="d-flex justify-content-between">
-              <p id="price-text">Price: <span id="amount-text">$${price}</span></p>
-              <p>Rating: ${rate}(${count})</p>
+              <div>
+                <p id="price-text">Price: <span id="amount-text">$${price}</span></p>
+              </div>
+              <div>
+                <p>Rating: ${rate}(${count})</p>
+              </div>
             </div>
           </div>
           <div class ="card-footer d-flex justify-content-between">
-            <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="cart-btn">add to cart</button>
-            <button id="details-btn" class="detail-btn">Details</button>
+            <button onclick="addToCart(${id},${price})" id="addToCart-btn" class="customized-btn-one">add to cart</button>
+            <button id="details-btn" class="customized-btn-two">Details</button>
           </div>
     </div>`;
 
