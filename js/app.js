@@ -29,7 +29,7 @@ const customerRatings = (rate, count) => {
     innerHtml += `<i class="far fa-star"></i>`;
     i++;
   }
-  innerHtml += `(${rate}) <h6 class="rateCount"><i class="fas fa-users"></i> ${count}</h6>`;
+  innerHtml += `(${rate}) <h6 class="rateCount"><i class="fas fa-users"></i> ${count} Reviews</h6>`;
   return innerHtml;
 };
 
@@ -81,22 +81,6 @@ const addToCart = (id, price) => {
   document.getElementById("total-Products").innerText = count;
 };
 
-
-//grandTotal update function
-const updateTotal = () => {
-  const grandTotal =
-    getInputValue("price") + getInputValue("delivery-charge") +
-    getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal.toFixed(2);
-};
-
-//getting innerText and convert it in to floating value.
-const getInputValue = (id) => {
-  const element = document.getElementById(id).innerText;
-  const converted = parseFloat(element);
-  return converted;
-};
-
 // main price update function as new items gets added.
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
@@ -107,6 +91,20 @@ const updatePrice = (id, value) => {
   document.getElementById(id).innerText = total.toFixed(2);
 };
 
+//getting innerText and convert it in to floating value.
+const getInputValue = (id) => {
+  const element = document.getElementById(id).innerText;
+  const converted = parseFloat(element);
+  return converted;
+};
+
+//grandTotal update function
+const updateTotal = () => {
+  const grandTotal =
+    getInputValue("price") + getInputValue("delivery-charge") +
+    getInputValue("total-tax");
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
+};
 
 // update delivery charge and total Tax based on purchased amount
 const updateTaxAndCharge = () => {
