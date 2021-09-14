@@ -49,9 +49,13 @@ body {
 
 
 /* Search Box Customization and fixing */
+
+.web-banner{
+  color: #368B85;
+}
 .search-box {
   border-radius: 5px;
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 .search-box input{
